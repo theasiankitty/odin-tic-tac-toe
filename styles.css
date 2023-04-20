@@ -1,0 +1,270 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+
+:root {
+  /* custom color */
+  /* neutral color palette */
+  --clr-black: #1c1c1c;
+  --clr-white: #efefef;
+  --board-size: 25rem;
+  --logo-size: 40rem;
+}
+
+html {
+  font-size: 100%;
+  /* set font to 100% always */
+  box-sizing: border-box;
+  /* set box-sizing to border-box always */
+}
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  /* set browser padding to zero */
+  margin: 0;
+  /* set browser margin to zero */
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  /* set default or custom fonts above */
+  font-size: 1.25rem;
+  line-height: 1.5;
+  font-weight: 300;
+  background-color: var(--clr-black);
+  color: var(--clr-white);
+  cursor: url(assets/images/custom-cursor.png), auto;
+}
+
+/* layout */
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.header-container img {
+  width: min(var(--logo-size), 100%);
+}
+
+.board-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
+  width: min(280px, 100%);
+  height: min(280px, 100%);
+}
+
+.square {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.character-size {
+  width: 75%;
+  height: 75%;
+}
+
+.message-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.current-player {
+  width: min(20px, 100%);
+  height: min(20px, 100%);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.modal-container {
+  width: 100%;
+  height: 100%;
+}
+
+.modal-body {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(25rem, 90%);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 2fr 7fr 1fr;
+  gap: 4rem;
+  padding: 1rem;
+}
+
+.modal-header,
+.modal-content,
+.modal-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.final-header {
+  width: min(500px, 100%);
+  height: 100%;
+}
+
+.final-content {
+  width: min(500px, 100%);
+  height: 100%;
+}
+
+.new-game {
+  width: 75%;
+}
+
+/* style */
+.header-container img {
+  animation: fade-in 3s;
+}
+
+.board {
+  background-image: url(assets/images/tic-tac-toe-bones-bg.svg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: grow 0.5s;
+}
+
+.character-size {
+  animation: fade-in 1s;
+}
+
+.x-player {
+  background-image: url(assets/images/x-bone.svg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.o-player {
+  background-image: url(assets/images/o-bone.svg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.winner-header {
+  background-image: url(assets/images/winner.svg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.draw-header {
+  background-image: url(assets/images/draw.svg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.draw {
+  background-image: url(assets/images/xo-bone.svg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.message {
+  font-size: 1.2rem;
+}
+
+.message-container {
+  animation: fade-in 3s;
+}
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.95);
+}
+
+.modal-container {
+  animation: grow 1s;
+}
+
+.modal-close-animation {
+  animation: shrink 0.5s;
+}
+
+/* animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes grow {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes shrink {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0);
+  }
+}
+
+/* media query */
+@media (min-width: 300px) {
+  .board {
+    width: min(300px, 100%);
+    height: min(300px, 100%);
+  }
+}
+
+@media (min-width: 400px) {
+  .board {
+    width: min(380px, 100%);
+    height: min(380px, 100%);
+  }
+}
+
+@media (min-width: 800px) {
+  .board {
+    width: min(380px, 100%);
+    height: min(380px, 100%);
+  }
+}
